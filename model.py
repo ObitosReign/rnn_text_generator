@@ -3,8 +3,6 @@ from tensorflow import keras
 import numpy as np
 import os, time
 
-print(tf.__version__)
-
 # Download the dataset
 path_to_file = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
 # Read file & decode for py2 compat
@@ -93,9 +91,9 @@ loss = tf.losses.SparseCategoricalCrossentropy(from_logits=True)
 model.compile(optimizer='adam', loss=loss)
 
 # Train the model
-EPOCHS = 5
+EPOCHS = 1
 
 model.built = True
-model.load_weights('my_model_weights')
+model.load_weights('model_weights/my_model_weights')
 history = model.fit(dataset, epochs=EPOCHS)
-model.save_weights('my_model_weights')
+model.save_weights('model_weights/my_model_weights')
